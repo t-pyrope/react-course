@@ -8,12 +8,19 @@ import {
   Typography,
 } from "@mui/material";
 import { NavLink, Outlet } from "react-router";
-import { deepOrange, lightGreen } from "@mui/material/colors";
+import { grey, lime } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
-    primary: lightGreen,
-    secondary: deepOrange,
+    primary: grey,
+    secondary: {
+      main: lime["500"],
+    },
+  },
+  components: {
+    MuiAppBar: {
+      styleOverrides: {},
+    },
   },
 });
 
@@ -21,11 +28,18 @@ export const Layout = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="fixed">
+      <AppBar position="fixed" elevation={1}>
         <Toolbar>
           <Typography variant="h6" noWrap component="h1">
-            <NavLink to="/" style={{ color: "inherit", fontWeight: "bold" }}>
-              Курсы по React.js
+            <NavLink
+              to="/"
+              style={{
+                color: "inherit",
+                fontFamily: `"IBM Plex Sans", sans-serif`,
+                fontWeight: 600,
+              }}
+            >
+              Курсы "Hey look ma, I'm a programmer"
             </NavLink>
           </Typography>
         </Toolbar>

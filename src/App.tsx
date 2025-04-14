@@ -1,14 +1,11 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { CourseCard } from "./components/CourseCard.tsx";
 
 function App() {
   return (
     <>
-      <Typography sx={{ mt: 3, mb: 3 }}>
-        Привет! Перед вами платформа с одними из многочисленных курсов по
-        React.js, которые вы можете встретить в интернете
-      </Typography>
       <Stack
+        sx={{ mt: 3 }}
         direction={{ xs: "column", sm: "row" }}
         spacing={{ xs: 1, sm: 2, md: 4 }}
       >
