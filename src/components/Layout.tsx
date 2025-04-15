@@ -28,7 +28,11 @@ export const Layout = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="fixed" elevation={1}>
+      <AppBar
+        position="fixed"
+        elevation={1}
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
         <Toolbar>
           <Typography variant="h6" noWrap component="h1">
             <NavLink
