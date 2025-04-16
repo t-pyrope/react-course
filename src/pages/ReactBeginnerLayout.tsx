@@ -9,6 +9,12 @@ import {
   Toolbar,
 } from "@mui/material";
 import { Outlet } from "react-router";
+import { useState } from "react";
+
+export interface ReactBeginnerContextProps {
+  progress: string[];
+  setProgress: (newProgress: string[]) => void;
+}
 
 const steps: { label: string; lessons: { title: string; path: string }[] }[] = [
   {
@@ -33,6 +39,17 @@ const steps: { label: string; lessons: { title: string; path: string }[] }[] = [
 ];
 
 export const ReactBeginnerLayout = () => {
+  const [progress, setProgress] = useState<string[]>(() => {
+    const currentProgress = localStorage.getItem("progress");
+
+    return currentProgress ? JSON.parse(currentProgress) : ["step-1"];
+  });
+
+  const handleSetProgress = (newProgress: string[]) => {
+    setProgress(newProgress);
+    localStorage.setItem("progress", JSON.stringify(newProgress));
+  };
+
   return (
     <Box display="flex">
       <Drawer
@@ -66,6 +83,7 @@ export const ReactBeginnerLayout = () => {
                     sx={{ pl: 4 }}
                     key={lesson.title}
                     href={`/react-beginners/${lesson.path}`}
+                    disabled={!progress.includes(lesson.path)}
                   >
                     <ListItemText primary={lesson.title} />
                   </ListItemButton>
@@ -75,7 +93,14 @@ export const ReactBeginnerLayout = () => {
           ))}
         </List>
       </Drawer>
-      <Outlet />
+      <Outlet
+        context={
+          {
+            progress,
+            setProgress: handleSetProgress,
+          } satisfies ReactBeginnerContextProps
+        }
+      />
     </Box>
   );
 };

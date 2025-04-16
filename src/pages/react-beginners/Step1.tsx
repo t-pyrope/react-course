@@ -1,36 +1,47 @@
-import { Box, Breadcrumbs, Link, Paper, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import { useEffect } from "react";
+import { useOutletContext } from "react-router";
+
+import { StepContainer } from "./StepContainer.tsx";
+import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 
 export const Step1 = () => {
+  const { progress, setProgress } =
+    useOutletContext<ReactBeginnerContextProps>();
+
+  useEffect(() => {
+    if (!progress.includes("step-2")) {
+      setProgress([...progress, "step-2"]);
+    }
+  }, [progress, setProgress]);
+
   return (
-    <Box sx={{ margin: "0 auto", width: 800 }}>
-      <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
-          MUI
-        </Link>
-        <Link
-          underline="hover"
-          color="inherit"
-          href="/material-ui/getting-started/installation/"
+    <StepContainer title="Введение" steps={[0]} activeStep={0}>
+      <Typography>
+        React.js - это библиотека на JavaScript, в которой очень много чего
+        настроено и можно (относительно) легко и быстро разрабатывать
+        веб-приложения (программы, которые работают в браузере)
+      </Typography>
+      <Typography>
+        JavaScript - это язык программирования. С помощью него можно писать
+        инструкции, которые (после некоторых преобразований) понимает и
+        исполняет компьютер
+      </Typography>
+      <Typography>
+        В этом модуле мы быстро пройдемся по основным возможностям JavaScript,
+        которые будем применять в разработке на этом курсе. После небольшого
+        блока теории будут ссылки для дополнительного изучения и тесты (не
+        включающие в себя материал из ссылок)
+      </Typography>
+      <Box>
+        <Button
+          color="secondary"
+          variant="contained"
+          href="/react-beginners/step-2"
         >
-          Core
-        </Link>
-        <Typography sx={{ color: "text.primary" }}>Breadcrumbs</Typography>
-      </Breadcrumbs>
-      <Paper variant="outlined" sx={{ p: 2 }}>
-        <Typography>
-          React.js - это библиотека на JavaScript, в которой очень много чего
-          настроено и можно (относительно) легко и быстро разрабатывать
-          веб-приложения (программы, которые работают в браузере)
-        </Typography>
-        <Typography>
-          JavaScript - это язык программирования. С помощью него можно писать
-          инструкции, которые (после некоторых преобразований) понимает и
-          исполняет компьютер В этом модуле мы быстро пройдемся по основным
-          возможностям JavaScript, которые будем применять в разработке на этом
-          курсе. После небольшого блока теории будут ссылки для дополнительного
-          изучения и тесты (не включающие в себя материал из ссылок)
-        </Typography>
-      </Paper>
-    </Box>
+          Далее
+        </Button>
+      </Box>
+    </StepContainer>
   );
 };
