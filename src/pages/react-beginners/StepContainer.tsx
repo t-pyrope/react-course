@@ -1,10 +1,4 @@
-import {
-  Paper,
-  Step,
-  StepLabel,
-  Stepper,
-  Typography,
-} from "@mui/material";
+import { Paper, Step, StepLabel, Stepper, Typography } from "@mui/material";
 import { ReactNode } from "react";
 
 export const StepContainer = ({
@@ -33,19 +27,21 @@ export const StepContainer = ({
       <Typography variant="h3" component="h2">
         {title}
       </Typography>
-      <Stepper
-        sx={{ marginLeft: "-8px" }}
-        color="secondary"
-        activeStep={activeStep}
-      >
-        {steps.map((label) => {
-          return (
-            <Step key={label} completed>
-              <StepLabel />
-            </Step>
-          );
-        })}
-      </Stepper>
+      {steps.length > 1 && (
+        <Stepper
+          sx={{ marginLeft: "-8px" }}
+          color="secondary"
+          activeStep={activeStep}
+        >
+          {steps.map((label) => {
+            return (
+              <Step key={label} completed>
+                <StepLabel />
+              </Step>
+            );
+          })}
+        </Stepper>
+      )}
       {children}
     </Paper>
   );

@@ -11,7 +11,10 @@ export const ReactBeginnersPage = () => {
       <Typography>
         В этом курсе вы поверхностно освоите JavaScript, React.js. Вы также
         напишете небольшой проект с использованием Vite.js, Material UI и The
-        Easiest Weather API. Курс находится в разработке и будет меняться
+        Easiest Weather API
+      </Typography>
+      <Typography sx={{ fontWeight: "bold", fontStyle: "italic" }}>
+        Курс находится в разработке и будет меняться
       </Typography>
       <Box>
         <Button
