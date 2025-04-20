@@ -10,8 +10,8 @@ export const Step2 = () => {
     useOutletContext<ReactBeginnerContextProps>();
 
   useEffect(() => {
-    if (!progress.includes("step-3")) {
-      setProgress([...progress, "step-3"]);
+    if (!progress.includes("step-3-1")) {
+      setProgress([...progress, "step-3-1"]);
     }
   }, [progress, setProgress]);
 

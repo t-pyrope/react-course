@@ -3,9 +3,13 @@ import { Box, Button } from "@mui/material";
 export const BackForwardButtons = ({
   onHandleBack,
   onHandleForward,
+  isForwardDisabled = false,
+  href,
 }: {
   onHandleBack?: () => void;
   onHandleForward?: () => void;
+  isForwardDisabled?: boolean;
+  href?: string;
 }) => {
   return (
     <Box display="flex" gap={2}>
@@ -14,8 +18,14 @@ export const BackForwardButtons = ({
           Назад
         </Button>
       )}
-      {!!onHandleForward && (
-        <Button onClick={onHandleForward} variant="contained" color="secondary">
+      {(!!onHandleForward || href) && (
+        <Button
+          onClick={onHandleForward}
+          variant="contained"
+          color="secondary"
+          disabled={isForwardDisabled}
+          href={href}
+        >
           Далее
         </Button>
       )}

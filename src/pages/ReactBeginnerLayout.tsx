@@ -83,7 +83,12 @@ export const ReactBeginnerLayout = () => {
                     sx={{ pl: 4 }}
                     key={lesson.title}
                     href={`/react-beginners/${lesson.path}`}
-                    disabled={!progress.includes(lesson.path)}
+                    disabled={
+                      !(
+                        progress.find((path) => path.startsWith(lesson.path)) ||
+                        progress.includes(lesson.path)
+                      )
+                    }
                   >
                     <ListItemText primary={lesson.title} />
                   </ListItemButton>

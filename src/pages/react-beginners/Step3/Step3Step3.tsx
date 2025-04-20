@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { LiveEditor, LivePreview, LiveProvider } from "react-live";
-import { themes } from "prism-react-renderer";
+
 import { BackForwardButtons } from "../../../components/BackForwardButtons.tsx";
 
 export const Step3Step3 = ({
@@ -18,13 +18,15 @@ export const Step3Step3 = ({
         но не забудьте при этом обновить название
       </Typography>
       <LiveProvider
-        theme={themes.vsLight}
+        // theme={themes.vsLight}
         code={`() => {
   const buttonText = "Like";
   return <button>{buttonText}</button>;
 }`}
       >
-        <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
+        <div
+          style={{ display: "grid", gridTemplateColumns: "49% 49%", gap: "2%" }}
+        >
           <LiveEditor />
           <LivePreview />
         </div>
