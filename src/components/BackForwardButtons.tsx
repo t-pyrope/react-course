@@ -5,16 +5,18 @@ export const BackForwardButtons = ({
   onHandleForward,
   isForwardDisabled = false,
   href,
+  forwardText = "Далее",
 }: {
   onHandleBack?: () => void;
   onHandleForward?: () => void;
   isForwardDisabled?: boolean;
   href?: string;
+  forwardText?: string;
 }) => {
   return (
-    <Box display="flex" gap={2}>
+    <Box display="flex" gap={2} sx={{ pt: 4 }}>
       {!!onHandleBack && (
-        <Button onClick={onHandleBack} variant="contained" color="secondary">
+        <Button onClick={onHandleBack} variant="contained">
           Назад
         </Button>
       )}
@@ -22,11 +24,10 @@ export const BackForwardButtons = ({
         <Button
           onClick={onHandleForward}
           variant="contained"
-          color="secondary"
           disabled={isForwardDisabled}
           href={href}
         >
-          Далее
+          {forwardText}
         </Button>
       )}
     </Box>

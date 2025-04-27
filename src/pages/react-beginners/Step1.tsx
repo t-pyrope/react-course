@@ -1,9 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useOutletContext } from "react-router";
 
 import { StepContainer } from "./StepContainer.tsx";
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
+import { BackForwardButtons } from "../../components/BackForwardButtons";
 
 export const Step1 = () => {
   const { progress, setProgress } =
@@ -33,15 +34,7 @@ export const Step1 = () => {
         блока теории будут ссылки для дополнительного изучения и тесты (не
         включающие в себя материал из ссылок)
       </Typography>
-      <Box>
-        <Button
-          color="secondary"
-          variant="contained"
-          href="/react-beginners/step-2"
-        >
-          Далее
-        </Button>
-      </Box>
+      <BackForwardButtons href="/react-beginners/step-2" />
     </StepContainer>
   );
 };

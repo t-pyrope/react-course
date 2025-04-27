@@ -1,9 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import { StepContainer } from "./StepContainer.tsx";
 import { useEffect } from "react";
 import { useOutletContext } from "react-router";
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout.tsx";
+import { BackForwardButtons } from "../../components/BackForwardButtons.tsx";
 
 export const Step2 = () => {
   const { progress, setProgress } =
@@ -28,15 +29,7 @@ export const Step2 = () => {
         - можно здесь в принципе все учить, это вам очень сильно сэкономит время
         при разработке и поможет писать качественный код
       </Typography>
-      <Box>
-        <Button
-          color="secondary"
-          variant="contained"
-          href="/react-beginners/step-3"
-        >
-          Далее
-        </Button>
-      </Box>
+      <BackForwardButtons href="/react-beginners/step-3" />
     </StepContainer>
   );
 };

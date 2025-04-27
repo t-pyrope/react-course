@@ -1,9 +1,11 @@
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+
 import { CourseCard } from "./components/CourseCard.tsx";
 
 function App() {
   return (
-    <>
+    <Stack>
+      <Typography sx={{ mt: 2 }}>Курсы по программированию для начинающих</Typography>
       <Stack
         sx={{ mt: 3 }}
         direction={{ xs: "column", sm: "row" }}
@@ -22,7 +24,7 @@ function App() {
           href="/react-beginners"
         />
       </Stack>
-    </>
+    </Stack>
   );
 }
 

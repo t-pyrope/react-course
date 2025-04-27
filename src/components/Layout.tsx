@@ -8,18 +8,20 @@ import {
   Typography,
 } from "@mui/material";
 import { NavLink, Outlet } from "react-router";
-import { grey, lime } from "@mui/material/colors";
+import { cyan, teal } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
-    primary: grey,
-    secondary: {
-      main: lime["500"],
-    },
+    primary: teal,
+    success: cyan,
   },
   components: {
     MuiAppBar: {
-      styleOverrides: {},
+      styleOverrides: {
+        root: {
+          backgroundColor: "#24292e",
+        },
+      },
     },
   },
 });
@@ -38,12 +40,16 @@ export const Layout = () => {
             <NavLink
               to="/"
               style={{
-                color: "inherit",
+                color: "#fff",
                 fontFamily: `"IBM Plex Sans", sans-serif`,
                 fontWeight: 600,
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
               }}
             >
-              Курсы "Hey look ma, I'm a programmer"
+              <img src={"/icon.svg"} width={30} height={30} />
+              Hey look ma, I'm a programmer
             </NavLink>
           </Typography>
         </Toolbar>

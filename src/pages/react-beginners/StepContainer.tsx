@@ -26,7 +26,6 @@ export const StepContainer = ({
         flexDirection: "column",
         flexGrow: 1,
         m: 2,
-        minHeight: 500,
       }}
     >
       <Typography variant="h3" component="h2">
