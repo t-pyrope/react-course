@@ -1,20 +1,25 @@
 import { Typography } from "@mui/material";
-
-import { StepContainer } from "./StepContainer.tsx";
 import { useEffect } from "react";
 import { useOutletContext } from "react-router";
-import { ReactBeginnerContextProps } from "../ReactBeginnerLayout.tsx";
-import { BackForwardButtons } from "../../components/BackForwardButtons.tsx";
+
+import { StepContainer } from "./StepContainer";
+import { StepNotOpened } from "./StepNotOpened";
+import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
+import { BackForwardButtons } from "../../components/BackForwardButtons";
 
 export const Step2 = () => {
   const { progress, setProgress } =
     useOutletContext<ReactBeginnerContextProps>();
 
   useEffect(() => {
-    if (!progress.includes("step-3-1")) {
+    if (progress.includes("step-2") && !progress.includes("step-3-1")) {
       setProgress([...progress, "step-3-1"]);
     }
   }, [progress, setProgress]);
+
+  if (!progress.includes("step-2")) {
+    return <StepNotOpened />;
+  }
 
   return (
     <StepContainer title="Полезные ссылки" steps={[0]} activeStep={0}>

@@ -11,6 +11,7 @@ import { Step2 } from "./pages/react-beginners/Step2";
 import { Step3 } from "./pages/react-beginners/Step3";
 import { Step4 } from "./pages/react-beginners/Step4";
 import { Step5 } from "./pages/react-beginners/Step5";
+import { Step6 } from "./pages/react-beginners/Step6";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
           { path: "step-3", Component: Step3 },
           { path: "step-4", Component: Step4 },
           { path: "step-5", Component: Step5 },
+          { path: "step-6", Component: Step6 },
           { path: "*", Component: ReactBeginnerNotFound },
         ],
       },

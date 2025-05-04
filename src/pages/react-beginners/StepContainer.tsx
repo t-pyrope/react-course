@@ -7,6 +7,7 @@ export const StepContainer = ({
   steps,
   activeStep,
   checkCompleted,
+  checkEnabled,
   setActiveStep,
 }: {
   title: string;
@@ -14,6 +15,7 @@ export const StepContainer = ({
   steps: number[];
   activeStep: number;
   checkCompleted?: (step: number) => boolean;
+  checkEnabled?: (step: number) => boolean;
   setActiveStep?: (step: number) => void;
 }) => {
   return (
@@ -39,11 +41,12 @@ export const StepContainer = ({
         >
           {steps.map((label) => {
             const completed = checkCompleted(label);
+            const enabled = checkEnabled?.(label) ?? false;
 
             return (
               <Step key={label} completed={completed}>
                 <StepButton
-                  disabled={!completed}
+                  disabled={!enabled}
                   onClick={() => setActiveStep(label)}
                   aria-label={`Шаг ${label + 1}`}
                 />

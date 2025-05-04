@@ -8,7 +8,8 @@ import { Step3Step3 } from "./Step3/Step3Step3";
 import { Step3Step4 } from "./Step3/Step3Step4";
 import { Step3Step5 } from "./Step3/Step3Step5";
 import { Step3Step6 } from "./Step3/Step3Step6";
-import { ReactBeginnerContextProps } from "../ReactBeginnerLayout.tsx";
+import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
+import { StepNotOpened } from "./StepNotOpened";
 
 export const Step3 = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -24,13 +25,18 @@ export const Step3 = () => {
     window.scrollTo(0, 0);
   };
 
+  if (!progress.find((step) => step.startsWith("step-3"))) {
+    return <StepNotOpened />;
+  }
+
   return (
     <StepContainer
       title="Типы данных"
       steps={[0, 1, 2, 3, 4, 5]}
       activeStep={activeStep}
-      setActiveStep={setActiveStep}
+      setActiveStep={handleActiveStep}
       checkCompleted={(step) => progress.includes(`step-3-${step + 1}`)}
+      checkEnabled={(step) => step === 0 || progress.includes(`step-3-${step}`)}
     >
       {activeStep === 0 && <Step3Step1 setActiveStep={handleActiveStep} />}
       {activeStep === 1 && <Step3Step2 setActiveStep={handleActiveStep} />}

@@ -19,9 +19,9 @@ export const Step4Step1 = ({
       <JustCode
         code={[
           `const helloWord = "Добро пожаловать";`,
-          `const helloWord = "Добро пожаловать";`,
+          `const name = "Петя";`,
           ``,
-          `const helloMessage = \`\${name}, \${helloWord}\`; // "Добро пожаловать, Петя"`,
+          `const helloMessage = \`\${helloWord}, \${name}\`; // "Добро пожаловать, Петя"`,
         ].join("\n")}
       />
       <Typography>
