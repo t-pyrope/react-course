@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { BackForwardButtons } from "../../../components/BackForwardButtons.tsx";
-import { JustCode } from "../../../components/JustCode.tsx";
+import { CodeEditor } from "../../../components/CodeEditor";
 
 export const Step3Step4 = ({
   setActiveStep,
@@ -39,7 +39,7 @@ export const Step3Step4 = ({
       <Typography>
         Например с помощью оператора <code>typeof</code>
       </Typography>
-      <JustCode
+      <CodeEditor
         code={`
 const someVariableFromServer = "It is string";
 typeof someVariableFromServer"; // вернет строку "string"
@@ -53,7 +53,7 @@ typeof anotherVariable; // вернет строку "number"
         массивы, а если мы хотим на переменной использовать метод именно
         массива, то нам нужно убедиться, что тип переменной - именно массив
       </Typography>
-      <JustCode
+      <CodeEditor
         code={`Array.isArray([5, 15]); // вернет логическое значение true
 const numbersObj = { one : 1, two: 2 };
 Array.isArray(numbersObj); // false
@@ -64,7 +64,7 @@ Array.isArray(booksCount) // false`}
         Проверить, является ли переменная числом, можно с помощью ряда методов:
         Number.isFinite, Number.isNaN (позднее разберем его)
       </Typography>
-      <JustCode
+      <CodeEditor
         code={`const numString = "1";
 Number.isFinite(numString); // вернет false
 Number.isFinite(1); // вернет true`}

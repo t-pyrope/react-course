@@ -31,7 +31,7 @@ const steps: { label: string; lessons: { title: string; path: string }[] }[] = [
     lessons: [
       { title: "Полезные ссылки", path: "step-5" },
       { title: "Установка окружения", path: "step-6" },
-      { title: "Создаем проект", path: "step-7" },
+      { title: "Создаем тестовый проект", path: "step-7" },
       { title: "Компоненты React.js", path: "step-8" },
       { title: "Material UI", path: "step-9" },
     ],

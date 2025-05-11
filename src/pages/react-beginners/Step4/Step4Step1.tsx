@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 
-import { JustCode } from "../../../components/JustCode";
+import { CodeEditor } from "../../../components/CodeEditor";
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
 
 export const Step4Step1 = ({
@@ -10,13 +10,12 @@ export const Step4Step1 = ({
 }) => {
   return (
     <>
-      {" "}
       <Typography>Действия со строками:</Typography>
       <Typography>
         1. Чтобы склеивать строки, будем использовать следующий синтаксис
         (интерполяцию):
       </Typography>
-      <JustCode
+      <CodeEditor
         code={[
           `const helloWord = "Добро пожаловать";`,
           `const name = "Петя";`,
@@ -28,7 +27,7 @@ export const Step4Step1 = ({
         2. Операции, возвращающие <code>true</code> или <code>false</code>{" "}
         (пригодятся для условий):
       </Typography>
-      <JustCode
+      <CodeEditor
         code={[
           `const age = 26;`,
           `const universityStreet = "Лермонтова";`,

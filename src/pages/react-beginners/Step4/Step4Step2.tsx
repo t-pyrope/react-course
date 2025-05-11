@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 
-import { JustCode } from "../../../components/JustCode";
+import { CodeEditor } from "../../../components/CodeEditor";
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
 
 export const Step4Step2 = ({
@@ -11,7 +11,7 @@ export const Step4Step2 = ({
   return (
     <>
       <Typography>Условное ветвление:</Typography>
-      <JustCode
+      <CodeEditor
         code={[
           `const name = "Виктория";`,
           `const isFemale = true;`,
@@ -28,7 +28,7 @@ export const Step4Step2 = ({
         ].join("\n")}
       />
       <Typography>Другой вариант:</Typography>
-      <JustCode
+      <CodeEditor
         code={[
           `const name = "Вика";`,
           `const isFemale = true;`,

@@ -7,7 +7,6 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
-  Typography,
 } from "@mui/material";
 import { useId, useState } from "react";
 
@@ -28,7 +27,6 @@ export const Step6Step2 = ({
 
   return (
     <>
-      <Typography>У вас установлен и открыт IDE?</Typography>
       {isCorrect === false && (
         <Alert severity="error">
           Некоторые ответы неверны, пожалуйста, попробуйте еще раз

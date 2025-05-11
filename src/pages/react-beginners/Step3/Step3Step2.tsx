@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
-import { BackForwardButtons } from "../../../components/BackForwardButtons.tsx";
-import { JustCode } from "../../../components/JustCode.tsx";
+import { BackForwardButtons } from "../../../components/BackForwardButtons";
+import { CodeEditor } from "../../../components/CodeEditor";
 
 export const Step3Step2 = ({
   setActiveStep,
@@ -10,7 +10,7 @@ export const Step3Step2 = ({
   return (
     <>
       <Typography>Вот обычный объект из предыдущего урока:</Typography>
-      <JustCode
+      <CodeEditor
         code={`const person = {
   name: "Анастасия Ивановна",
   age: 23,
@@ -26,9 +26,9 @@ export const Step3Step2 = ({
         упорядоченная структура данных. Массив имеет свои оптимизации и
         преимущества. Выглядит он следующим образом:
       </Typography>
-      <JustCode code={`const persons = ["Анастасия", "Петр", "Влад Цепеш"];`} />
+      <CodeEditor code={`const persons = ["Анастасия", "Петр", "Влад Цепеш"];`} />
       <Typography>
-        Второй - функция. Это объект, который способен запустить какое-то
+          Второй - <span style={{ fontWeight: "bold" }}>функция</span>. Это объект, который способен запустить какое-то
         действие - например, "доставать все штуки из коробки по очереди и
         покрасить их в зеленый цвет", или "отправлять пользователю сообщение
         каждые 10 минут". Мы создаем функцию и потом используем ее. Есть
@@ -36,7 +36,7 @@ export const Step3Step2 = ({
         создавать функции способом, которыми мы их будем создавать в React.js -
         стрелочные функции
       </Typography>
-      <JustCode
+      <CodeEditor
         code={`const addNameToMessage = (name) => {
   return "Привет, меня зовут " + name;
 };
@@ -48,7 +48,7 @@ const sayHi = () => {
 }`}
       />
       <Typography>Использование функции:</Typography>
-      <JustCode code={`const message = addNameToMessage("Вася");`} />
+      <CodeEditor code={`const message = addNameToMessage("Вася");`} />
       <Typography>
         Если представить функцию <code>addNameToMessage</code> как маленький
         механизм - мы передали туда имя ("Вася"), и она нам вернула (returned)
@@ -57,7 +57,7 @@ const sayHi = () => {
       <Typography>
         Один из других, наиболее часто используемых способов создания функции:
       </Typography>
-      <JustCode
+      <CodeEditor
         code={`function addNameToMessage(name) {
   return "Привет, меня зовут " + name;
 }`}

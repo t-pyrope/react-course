@@ -7,13 +7,12 @@ export const ReactBeginnersPage = () => {
     <Stack direction="column" spacing={2}>
       <Outlet />
       <Typography variant="h3" component="h2" sx={{ pt: 3 }}>
-        Курс React.js с нуля
+        Подготовка к программированию на React.js
       </Typography>
       <Stack spacing={1}>
         <Typography>
-          В этом курсе вы поверхностно освоите JavaScript и React.js. Вы также
-          напишете небольшой проект с использованием Vite.js, Material UI и The
-          Easiest Weather API
+          В этом курсе вы поверхностно освоите JavaScript и установите окружение
+          для программирования на React.js
         </Typography>
         <Typography sx={{ fontWeight: "bold", fontStyle: "italic" }}>
           Курс находится в разработке и будет меняться
