@@ -10,8 +10,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useId, useState } from "react";
+import { useOutletContext } from "react-router";
 
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
+import { ReactBeginnerContextProps } from "../../ReactBeginnerLayout";
 
 export const Step6Step4 = ({
   setActiveStep,
@@ -21,9 +23,15 @@ export const Step6Step4 = ({
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [value, setValue] = useState<string>();
   const formId = useId();
+  const { progress, setProgress } =
+    useOutletContext<ReactBeginnerContextProps>();
 
   const handleCheck = () => {
-    setIsCorrect(value === "yes");
+    const newIsCorrect = value === "yes";
+    setIsCorrect(newIsCorrect);
+    if (newIsCorrect && !progress.includes("step-7-1")) {
+      setProgress([...progress, "step-7-1"]);
+    }
   };
 
   return (

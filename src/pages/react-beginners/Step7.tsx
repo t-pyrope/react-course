@@ -4,6 +4,8 @@ import { useOutletContext } from "react-router";
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 import { StepContainer } from "./StepContainer";
 import { Step7Step1 } from "./Step7/Step7Step1";
+import { Step7Step2 } from "./Step7/Step7Step2";
+import { Step7Step3 } from "./Step7/Step7Step3";
 
 export const Step7 = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -21,8 +23,8 @@ export const Step7 = () => {
 
   return (
     <StepContainer
-      title="Установка окружения"
-      steps={[0, 1, 2]}
+      title="Создаем тестовый проект"
+      steps={[0, 1, 2, 3]}
       activeStep={activeStep}
       setActiveStep={handleActiveStep}
       checkEnabled={() => true}
@@ -31,6 +33,8 @@ export const Step7 = () => {
       }
     >
       {activeStep === 0 && <Step7Step1 setActiveStep={handleActiveStep} />}
+      {activeStep === 1 && <Step7Step2 setActiveStep={handleActiveStep} />}
+      {activeStep === 2 && <Step7Step3 setActiveStep={handleActiveStep} />}
     </StepContainer>
   );
 };
