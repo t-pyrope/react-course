@@ -10,6 +10,8 @@ import {
 import { NavLink, Outlet } from "react-router";
 import { cyan, teal } from "@mui/material/colors";
 
+import { Footer } from "./Footer";
+
 const theme = createTheme({
   palette: {
     primary: teal,
@@ -57,6 +59,7 @@ export const Layout = () => {
       <Box component="main" sx={{ p: 3, mt: 7 }}>
         <Outlet />
       </Box>
+      <Footer />
     </ThemeProvider>
   );
 };
