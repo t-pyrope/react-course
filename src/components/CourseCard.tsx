@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Card,
   CardActions,
@@ -27,45 +26,46 @@ export const CourseCard = ({
 }) => {
   return (
     <Card
-      sx={{ display: "flex", width: "100%" }}
+      sx={{
+        width: 350,
+        boxShadow:
+          "0 0 2px 0 rgba(145 158 171 / 0.2), 0 12px 24px -4px rgba(145 158 171 / 0.12)",
+      }}
       variant="elevation"
       elevation={0}
     >
-      <CardMedia
-        component="img"
-        sx={{ width: 220, height: "100%", borderRadius: 2 }}
-        image={src}
-        alt={alt}
-      />
-      <Box sx={{ display: "flex", flexDirection: "column", pl: 1 }}>
-        <CardContent sx={{ flex: "1 0 auto" }}>
-          <Typography
-            component="h3"
-            variant="h5"
-            sx={{ marginBlockEnd: "2px" }}
-          >
-            {title}
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            sx={{ color: "text.secondary", fontSize: "0.9rem" }}
-            component="a"
-            href={srcSource}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Автор фотографии: {srcAuthor} (ссылка на pexels.com)
-          </Typography>
-          {descriptions.map((description) => (
-            <Typography key={description}>{description}</Typography>
-          ))}
-        </CardContent>
-        <CardActions>
-          <Button href={href} sx={{ fontWeight: "bold" }}>
-            Начать
-          </Button>
-        </CardActions>
-      </Box>
+      <CardMedia component="img" sx={{ height: 250 }} image={src} alt={alt} />
+      <CardContent
+        sx={{
+          flex: "1 0 auto",
+          pb: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: 1,
+        }}
+      >
+        <Typography component="h3" variant="h5" sx={{ marginBlockEnd: "2px" }}>
+          {title}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{ color: "text.secondary", fontSize: "0.9rem", lineHeight: 2 }}
+          component="a"
+          href={srcSource}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Автор фотографии: {srcAuthor} (ссылка на pexels.com)
+        </Typography>
+        {descriptions.map((description) => (
+          <Typography key={description}>{description}</Typography>
+        ))}
+      </CardContent>
+      <CardActions>
+        <Button href={href} sx={{ fontWeight: "bold" }}>
+          Начать
+        </Button>
+      </CardActions>
     </Card>
   );
 };
