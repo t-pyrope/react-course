@@ -6,14 +6,14 @@ import { StepNotOpened } from "./StepNotOpened";
 import { BackForwardButtons } from "../../components/BackForwardButtons";
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 
-export const Step5 = () => {
+export const Chapter2Step1 = () => {
   const { progress, setProgress } =
     useOutletContext<ReactBeginnerContextProps>();
-  const isStepEnabled = progress.includes("step-5");
+  const isStepEnabled = progress.includes("chapter-2/step-1");
 
   useEffect(() => {
-    if (isStepEnabled && !progress.includes("step-6-1")) {
-      setProgress([...progress, "step-6-1"]);
+    if (isStepEnabled && !progress.includes("chapter-2/step-2-1")) {
+      setProgress([...progress, "chapter-2/step-2-1"]);
     }
   }, [isStepEnabled, progress, setProgress]);
 
@@ -22,7 +22,18 @@ export const Step5 = () => {
   }
 
   return (
-    <StepContainer title="Полезные ссылки" steps={[0]} activeStep={0}>
+    <StepContainer
+      title="Полезные ссылки"
+      steps={[0]}
+      activeStep={0}
+      links={[
+        { href: "/react-beginners", title: "React.js курс" },
+        {
+          href: "/react-beginners/chapter-2",
+          title: "Начинаем изучать React.js",
+        },
+      ]}
+    >
       <ol>
         <li>
           <a
@@ -53,7 +64,7 @@ export const Step5 = () => {
           HTML, CSS. Его также используют во многих коммерческих проектах
         </li>
       </ol>
-      <BackForwardButtons href="/react-beginners/step-6" />
+      <BackForwardButtons href="/react-beginners/chapter-2/step-2" />
     </StepContainer>
   );
 };

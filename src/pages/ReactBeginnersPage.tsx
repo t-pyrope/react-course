@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { Outlet } from "react-router";
-import { BackForwardButtons } from "../components/BackForwardButtons.tsx";
+
+import { BackForwardButtons } from "../components/BackForwardButtons";
 
 export const ReactBeginnersPage = () => {
   return (
@@ -18,7 +19,10 @@ export const ReactBeginnersPage = () => {
           Курс находится в разработке и будет меняться
         </Typography>
       </Stack>
-      <BackForwardButtons href="/react-beginners/step-1" forwardText="Начать" />
+      <BackForwardButtons
+        href="/react-beginners/chapter-1"
+        forwardText="Начать"
+      />
     </Stack>
   );
 };

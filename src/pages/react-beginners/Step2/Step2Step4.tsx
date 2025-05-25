@@ -1,8 +1,9 @@
 import { Typography } from "@mui/material";
+
 import { BackForwardButtons } from "../../../components/BackForwardButtons.tsx";
 import { CodeEditor } from "../../../components/CodeEditor";
 
-export const Step3Step4 = ({
+export const Step2Step4 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;

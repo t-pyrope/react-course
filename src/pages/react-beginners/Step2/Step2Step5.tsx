@@ -1,9 +1,10 @@
 import { Alert, Box, Button, Typography } from "@mui/material";
-import { DragAndDropTest } from "../../../components/DragAndDropTest.tsx";
-import { BackForwardButtons } from "../../../components/BackForwardButtons.tsx";
 import { useState } from "react";
 
-export const Step3Step5 = ({
+import { DragAndDropTest } from "../../../components/DragAndDropTest";
+import { BackForwardButtons } from "../../../components/BackForwardButtons";
+
+export const Step2Step5 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;

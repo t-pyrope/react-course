@@ -16,24 +16,29 @@ export interface ReactBeginnerContextProps {
   setProgress: (newProgress: string[]) => void;
 }
 
-const steps: { label: string; lessons: { title: string; path: string }[] }[] = [
+const steps: {
+  label: string;
+  path: string;
+  lessons: { title: string; path: string }[];
+}[] = [
   {
-    label: "Знакомство с JavaScript",
+    label: "Введение",
+    path: "chapter-1",
     lessons: [
-      { title: "Введение", path: "step-1" },
-      { title: "Полезные ссылки", path: "step-2" },
-      { title: "Типы данных", path: "step-3" },
-      { title: "Некоторые операции", path: "step-4" },
+      { title: "Полезные ссылки", path: "step-1" },
+      { title: "Типы данных", path: "step-2" },
+      { title: "Некоторые операции", path: "step-3" },
     ],
   },
   {
     label: "Начинаем изучать React.js",
+    path: "chapter-2",
     lessons: [
-      { title: "Полезные ссылки", path: "step-5" },
-      { title: "Установка окружения", path: "step-6" },
-      { title: "Создаем тестовый проект", path: "step-7" },
-      { title: "Компоненты React.js", path: "step-8" },
-      { title: "Material UI", path: "step-9" },
+      { title: "Полезные ссылки", path: "step-1" },
+      { title: "Установка окружения", path: "step-2" },
+      { title: "Создаем тестовый проект", path: "step-3" },
+      { title: "Компоненты React.js", path: "step-4" },
+      { title: "Material UI", path: "step-5" },
     ],
   },
 ];
@@ -42,7 +47,7 @@ export const ReactBeginnerLayout = () => {
   const [progress, setProgress] = useState<string[]>(() => {
     const currentProgress = localStorage.getItem("progress");
 
-    return currentProgress ? JSON.parse(currentProgress) : ["step-1"];
+    return currentProgress ? JSON.parse(currentProgress) : ["chapter-1/step-1"];
   });
 
   const handleSetProgress = (newProgress: string[]) => {
@@ -76,17 +81,24 @@ export const ReactBeginnerLayout = () => {
               disablePadding
               sx={{ flexDirection: "column" }}
             >
-              <ListItemText primary={step.label} />
+              <ListItemButton
+                href={`/react-beginners/${step.path}`}
+                sx={{ width: "100%" }}
+                disabled={!progress.find((path) => path.startsWith(step.path))}
+              >
+                <ListItemText primary={step.label} />
+              </ListItemButton>
               <List>
                 {step.lessons.map((lesson) => (
                   <ListItemButton
                     sx={{ pl: 4 }}
                     key={lesson.title}
-                    href={`/react-beginners/${lesson.path}`}
+                    href={`/react-beginners/${step.path}/${lesson.path}`}
                     disabled={
                       !(
-                        progress.find((path) => path.startsWith(lesson.path)) ||
-                        progress.includes(lesson.path)
+                        progress.find((path) =>
+                          path.startsWith(`${step.path}/${lesson.path}`),
+                        ) || progress.includes(`${step.path}/${lesson.path}`)
                       )
                     }
                   >

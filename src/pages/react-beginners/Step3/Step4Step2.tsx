@@ -37,7 +37,7 @@ export const Step4Step2 = ({
       />
       <BackForwardButtons
         onHandleBack={() => setActiveStep(0)}
-        href="/react-beginners/step-5"
+        href="/react-beginners/chapter-2"
       />
     </>
   );

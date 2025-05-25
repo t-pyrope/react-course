@@ -5,7 +5,7 @@ import { useOutletContext } from "react-router";
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
 import { ReactBeginnerContextProps } from "../../ReactBeginnerLayout";
 
-export const Step3Step6 = ({
+export const Step2Step6 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;
@@ -19,8 +19,8 @@ export const Step3Step6 = ({
     const newIsCorrect = value.trim() === "function";
     setIsCorrect(newIsCorrect);
 
-    if (newIsCorrect && !progress.includes("step-4-1")) {
-      setProgress([...progress, "step-4-1"]);
+    if (newIsCorrect && !progress.includes("chapter-1/step-3-1")) {
+      setProgress([...progress, "chapter-1/step-3-1"]);
     }
   };
 
@@ -53,7 +53,7 @@ export const Step3Step6 = ({
       <BackForwardButtons
         onHandleBack={() => setActiveStep(4)}
         isForwardDisabled={!isCorrect}
-        href="/react-beginners/step-4"
+        href="/react-beginners/chapter-1/step-3"
       />
     </>
   );

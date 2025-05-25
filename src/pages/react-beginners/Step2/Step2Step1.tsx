@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
 import { CodeEditor } from "../../../components/CodeEditor";
 
-export const Step3Step1 = ({
+export const Step2Step1 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;

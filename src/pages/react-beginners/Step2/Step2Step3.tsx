@@ -3,7 +3,7 @@ import { LiveEditor, LivePreview, LiveProvider } from "react-live";
 
 import { BackForwardButtons } from "../../../components/BackForwardButtons.tsx";
 
-export const Step3Step3 = ({
+export const Step2Step3 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;

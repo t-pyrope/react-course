@@ -29,8 +29,8 @@ export const Step6Step4 = ({
   const handleCheck = () => {
     const newIsCorrect = value === "yes";
     setIsCorrect(newIsCorrect);
-    if (newIsCorrect && !progress.includes("step-7-1")) {
-      setProgress([...progress, "step-7-1"]);
+    if (newIsCorrect && !progress.includes("chapter-2/step-3-1")) {
+      setProgress([...progress, "chapter-2/step-3-1"]);
     }
   };
 
@@ -88,7 +88,7 @@ export const Step6Step4 = ({
         </Button>
       </Box>
       <BackForwardButtons
-        href="/react-beginners/step-7"
+        href="/react-beginners/chapter-2/step-3"
         onHandleBack={() => setActiveStep(0)}
         isForwardDisabled={!isCorrect}
       />

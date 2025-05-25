@@ -6,13 +6,14 @@ import { Layout } from "./components/Layout";
 import { ReactBeginnerNotFound } from "./pages/react-beginners/ReactBeginnerNotFound";
 import { ReactBeginnersPage } from "./pages/ReactBeginnersPage";
 import { ReactBeginnerLayout } from "./pages/ReactBeginnerLayout";
-import { Step1 } from "./pages/react-beginners/Step1";
-import { Step2 } from "./pages/react-beginners/Step2";
-import { Step3 } from "./pages/react-beginners/Step3";
-import { Step4 } from "./pages/react-beginners/Step4";
-import { Step5 } from "./pages/react-beginners/Step5";
-import { Step6 } from "./pages/react-beginners/Step6";
-import { Step7 } from "./pages/react-beginners/Step7";
+import { Chapter1 } from "./pages/react-beginners/Chapter1";
+import { Chapter1Step1 } from "./pages/react-beginners/Chapter1Step1";
+import { Chapter1Step2 } from "./pages/react-beginners/Chapter1Step2";
+import { Chapter1Step3 } from "./pages/react-beginners/Chapter1Step3";
+import { Chapter2 } from "./pages/react-beginners/Chapter2";
+import { Chapter2Step1 } from "./pages/react-beginners/Chapter2Step1";
+import { Chapter2Step2 } from "./pages/react-beginners/Chapter2Step2";
+import { Chapter2Step3 } from "./pages/react-beginners/Chapter2Step3";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -26,13 +27,24 @@ const router = createBrowserRouter([
         element: <ReactBeginnerLayout />,
         children: [
           { index: true, Component: ReactBeginnersPage },
-          { path: "step-1", Component: Step1 },
-          { path: "step-2", Component: Step2 },
-          { path: "step-3", Component: Step3 },
-          { path: "step-4", Component: Step4 },
-          { path: "step-5", Component: Step5 },
-          { path: "step-6", Component: Step6 },
-          { path: "step-7", Component: Step7 },
+          {
+            path: "chapter-1",
+            children: [
+              { index: true, Component: Chapter1 },
+              { path: "step-1", Component: Chapter1Step1 },
+              { path: "step-2", Component: Chapter1Step2 },
+              { path: "step-3", Component: Chapter1Step3 },
+            ],
+          },
+          {
+            path: "chapter-2",
+            children: [
+              { index: true, Component: Chapter2 },
+              { path: "step-1", Component: Chapter2Step1 },
+              { path: "step-2", Component: Chapter2Step2 },
+              { path: "step-3", Component: Chapter2Step3 },
+            ],
+          },
           { path: "*", Component: ReactBeginnerNotFound },
         ],
       },

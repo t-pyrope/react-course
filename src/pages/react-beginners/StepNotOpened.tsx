@@ -11,7 +11,12 @@ export const StepNotOpened = () => {
   const biggestStep = sortedSteps[sortedSteps.length - 1].split("-")[1];
 
   return (
-    <StepContainer title="Шаг еще не открыт" steps={[0]} activeStep={0}>
+    <StepContainer
+      title="Шаг еще не открыт"
+      steps={[0]}
+      activeStep={0}
+      links={[]}
+    >
       <Typography>Шаг еще не открыт</Typography>
       <Button href={`/react-beginners/step-${biggestStep}`}>
         Вернуться на предыдущий открытый шаг

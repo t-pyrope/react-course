@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 
-export const Step3Step7 = () => {
+export const Step2Step7 = () => {
   return (
     <Stack flexDirection="column" alignItems="center">
       <h2>Поздравляем! 👏</h2>

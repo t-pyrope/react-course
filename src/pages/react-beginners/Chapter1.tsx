@@ -1,28 +1,16 @@
 import { Typography } from "@mui/material";
-import { useEffect } from "react";
-import { useOutletContext } from "react-router";
 
-import { StepContainer } from "./StepContainer.tsx";
-import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 import { BackForwardButtons } from "../../components/BackForwardButtons";
+import { StepContainer } from "./StepContainer";
 
-export const Step1 = () => {
-  const { progress, setProgress } =
-    useOutletContext<ReactBeginnerContextProps>();
-
-  useEffect(() => {
-    if (!progress.includes("step-2")) {
-      setProgress([...progress, "step-2"]);
-    }
-  }, [progress, setProgress]);
-
+export const Chapter1 = () => {
   return (
-    <StepContainer title="Введение" steps={[0]} activeStep={0}>
-      <Typography>
-        React.js - это библиотека на JavaScript, в которой очень много чего
-        настроено и можно (относительно) легко и быстро разрабатывать
-        веб-приложения (программы, которые работают в браузере)
-      </Typography>
+    <StepContainer
+      title="Введение"
+      steps={[0]}
+      activeStep={0}
+      links={[{ href: "/react-beginners", title: "React.js курс" }]}
+    >
       <Typography>
         JavaScript - это язык программирования. С помощью него можно писать
         инструкции, которые (после некоторых преобразований) понимает и
@@ -34,7 +22,7 @@ export const Step1 = () => {
         блока теории будут ссылки для дополнительного изучения и тесты (не
         включающие в себя материал из ссылок)
       </Typography>
-      <BackForwardButtons href="/react-beginners/step-2" />
+      <BackForwardButtons href="/react-beginners/chapter-1/step-1" />
     </StepContainer>
   );
 };
