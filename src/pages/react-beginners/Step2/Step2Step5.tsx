@@ -1,14 +1,18 @@
 import { Alert, Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
+import { useOutletContext } from "react-router";
 
 import { DragAndDropTest } from "../../../components/DragAndDropTest";
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
+import { ReactBeginnerContextProps } from "../../ReactBeginnerLayout";
 
 export const Step2Step5 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;
 }) => {
+  const { correctAnswers, setCorrectAnswers } =
+    useOutletContext<ReactBeginnerContextProps>();
   const questions = [
     { text: `Number.isFinite("The Godfather")`, correctAnswerId: 3 },
     { text: `Array.isArray(["Bob", "Dorothy"])`, correctAnswerId: 1 },
@@ -23,15 +27,22 @@ export const Step2Step5 = ({
     { text: "false", id: 3 },
     { text: `"number"`, id: 4 },
   ];
+  const isAlreadyCorrect = correctAnswers.includes("step-2-step-5");
 
-  const [isCorrect, setIsCorrect] = useState<null | false | true>(null);
+  const [isCorrect, setIsCorrect] = useState<null | false | true>(() => {
+    return isAlreadyCorrect ? true : null;
+  });
+
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>(() => {
-    return answers.map((answer) => answer.id);
+    return isAlreadyCorrect
+      ? questions.map((q) => q.correctAnswerId)
+      : answers.map((answer) => answer.id);
   });
 
   const handleCheck = () => {
     if (questions.every((q, i) => q.correctAnswerId === selectedAnswers[i])) {
       setIsCorrect(true);
+      setCorrectAnswers([...correctAnswers, "step-2-step-5"]);
     } else {
       setIsCorrect(false);
     }
@@ -54,7 +65,12 @@ export const Step2Step5 = ({
         isDisabled={!!isCorrect}
       />
       <Box>
-        <Button color="success" variant="contained" onClick={handleCheck}>
+        <Button
+          color="success"
+          variant="contained"
+          onClick={handleCheck}
+          disabled={!!isCorrect}
+        >
           Проверить
         </Button>
       </Box>

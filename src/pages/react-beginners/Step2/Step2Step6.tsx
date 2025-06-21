@@ -10,17 +10,24 @@ export const Step2Step6 = ({
 }: {
   setActiveStep: (step: number) => void;
 }) => {
-  const [value, setValue] = useState("");
-  const [isCorrect, setIsCorrect] = useState<null | false | true>(null);
-  const { progress, setProgress } =
+  const { correctAnswers, setCorrectAnswers, progress, setProgress } =
     useOutletContext<ReactBeginnerContextProps>();
+  const isAlreadyCorrect = correctAnswers.includes("step-2-step-6");
+
+  const [value, setValue] = useState(isAlreadyCorrect ? "function" : "");
+  const [isCorrect, setIsCorrect] = useState<null | false | true>(
+    isAlreadyCorrect ? true : null,
+  );
 
   const handleCheck = () => {
     const newIsCorrect = value.trim() === "function";
     setIsCorrect(newIsCorrect);
 
-    if (newIsCorrect && !progress.includes("chapter-1/step-3-1")) {
-      setProgress([...progress, "chapter-1/step-3-1"]);
+    if (newIsCorrect) {
+      if (!progress.includes("chapter-1/step-3-1")) {
+        setProgress([...progress, "chapter-1/step-3-1"]);
+      }
+      setCorrectAnswers([...correctAnswers, "step-2-step-6"]);
     }
   };
 
@@ -42,10 +49,16 @@ export const Step2Step6 = ({
         variant="outlined"
         sx={{ width: "400px" }}
         value={value}
+        disabled={!!isCorrect}
         onChange={(e) => setValue(e.target.value)}
       />
       <Box>
-        <Button color="success" variant="contained" onClick={handleCheck}>
+        <Button
+          color="success"
+          variant="contained"
+          onClick={handleCheck}
+          disabled={!!isCorrect}
+        >
           Проверить
         </Button>
       </Box>

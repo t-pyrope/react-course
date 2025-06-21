@@ -1,7 +1,6 @@
 import {
-  Button,
   Card,
-  CardActions,
+  CardActionArea,
   CardContent,
   CardMedia,
   Typography,
@@ -34,38 +33,39 @@ export const CourseCard = ({
       variant="elevation"
       elevation={0}
     >
-      <CardMedia component="img" sx={{ height: 250 }} image={src} alt={alt} />
-      <CardContent
-        sx={{
-          flex: "1 0 auto",
-          pb: 2,
-          display: "flex",
-          flexDirection: "column",
-          gap: 1,
-        }}
-      >
-        <Typography component="h3" variant="h5" sx={{ marginBlockEnd: "2px" }}>
-          {title}
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          sx={{ color: "text.secondary", fontSize: "0.9rem", lineHeight: 2 }}
-          component="a"
-          href={srcSource}
-          target="_blank"
-          rel="noopener noreferrer"
+      <CardActionArea href={href}>
+        <CardMedia component="img" sx={{ height: 250 }} image={src} alt={alt} />
+        <CardContent
+          sx={{
+            flex: "1 0 auto",
+            pb: 2,
+            display: "flex",
+            flexDirection: "column",
+            gap: 1,
+          }}
         >
-          Автор фотографии: {srcAuthor} (ссылка на pexels.com)
-        </Typography>
-        {descriptions.map((description) => (
-          <Typography key={description}>{description}</Typography>
-        ))}
-      </CardContent>
-      <CardActions>
-        <Button href={href} sx={{ fontWeight: "bold" }}>
-          Начать
-        </Button>
-      </CardActions>
+          <Typography
+            component="h3"
+            variant="h5"
+            sx={{ marginBlockEnd: "2px" }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{ color: "text.secondary", fontSize: "0.9rem", lineHeight: 2 }}
+            component="a"
+            href={srcSource}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Автор фотографии: {srcAuthor} (ссылка на pexels.com)
+          </Typography>
+          {descriptions.map((description) => (
+            <Typography key={description}>{description}</Typography>
+          ))}
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
 };

@@ -29,7 +29,6 @@ export const StepContainer = ({
   setActiveStep?: (step: number) => void;
   links: { href: string; title: string }[];
 }) => {
-
   return (
     <Box sx={{ m: 2, flexGrow: 1 }}>
       <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
@@ -53,6 +52,7 @@ export const StepContainer = ({
         <Typography variant="h3" component="h2">
           {title}
         </Typography>
+
         {steps.length > 1 && !!checkCompleted && !!setActiveStep && (
           <Stepper
             sx={{ marginLeft: "-8px" }}

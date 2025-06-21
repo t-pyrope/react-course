@@ -20,17 +20,25 @@ export const Step6Step4 = ({
 }: {
   setActiveStep: (step: number) => void;
 }) => {
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const { correctAnswers, setCorrectAnswers, progress, setProgress } =
+    useOutletContext<ReactBeginnerContextProps>();
+  const isAlreadyCorrect = correctAnswers.includes("step-6-step-4");
+
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(
+    isAlreadyCorrect ? true : null,
+  );
   const [value, setValue] = useState<string>();
   const formId = useId();
-  const { progress, setProgress } =
-    useOutletContext<ReactBeginnerContextProps>();
 
   const handleCheck = () => {
     const newIsCorrect = value === "yes";
     setIsCorrect(newIsCorrect);
-    if (newIsCorrect && !progress.includes("chapter-2/step-3-1")) {
-      setProgress([...progress, "chapter-2/step-3-1"]);
+    if (newIsCorrect) {
+      if (!progress.includes("chapter-2/step-3-1")) {
+        setProgress([...progress, "chapter-2/step-3-1"]);
+      }
+
+      setCorrectAnswers([...correctAnswers, "step-6-step-4"]);
     }
   };
 
@@ -78,12 +86,27 @@ export const Step6Step4 = ({
           onChange={(e) => setValue(e.target.value)}
           name="radio-buttons-group"
         >
-          <FormControlLabel value="yes" control={<Radio />} label="Да" />
-          <FormControlLabel value="no" control={<Radio />} label="Нет" />
+          <FormControlLabel
+            value="yes"
+            control={<Radio />}
+            label="Да"
+            disabled={!!isCorrect}
+          />
+          <FormControlLabel
+            value="no"
+            control={<Radio />}
+            label="Нет"
+            disabled={!!isCorrect}
+          />
         </RadioGroup>
       </FormControl>
       <Box>
-        <Button color="success" variant="contained" onClick={handleCheck}>
+        <Button
+          color="success"
+          variant="contained"
+          onClick={handleCheck}
+          disabled={!!isCorrect}
+        >
           Проверить
         </Button>
       </Box>

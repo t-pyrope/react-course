@@ -14,6 +14,8 @@ import { useState } from "react";
 export interface ReactBeginnerContextProps {
   progress: string[];
   setProgress: (newProgress: string[]) => void;
+  correctAnswers: string[];
+  setCorrectAnswers: (newAnswers: string[]) => void;
 }
 
 const steps: {
@@ -49,10 +51,20 @@ export const ReactBeginnerLayout = () => {
 
     return currentProgress ? JSON.parse(currentProgress) : ["chapter-1/step-1"];
   });
+  const [correctAnswers, setCorrectAnswers] = useState<string[]>(() => {
+    const currentAnswers = localStorage.getItem("answers");
+
+    return currentAnswers ? JSON.parse(currentAnswers) : [];
+  });
 
   const handleSetProgress = (newProgress: string[]) => {
     setProgress(newProgress);
     localStorage.setItem("progress", JSON.stringify(newProgress));
+  };
+
+  const handleSetCorrectAnswers = (newAnswers: string[]) => {
+    setCorrectAnswers(newAnswers);
+    localStorage.setItem("answers", JSON.stringify(newAnswers));
   };
 
   return (
@@ -113,6 +125,8 @@ export const ReactBeginnerLayout = () => {
       <Outlet
         context={
           {
+            correctAnswers,
+            setCorrectAnswers: handleSetCorrectAnswers,
             progress,
             setProgress: handleSetProgress,
           } satisfies ReactBeginnerContextProps
