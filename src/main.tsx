@@ -14,6 +14,7 @@ import { Chapter2 } from "./pages/react-beginners/Chapter2";
 import { Chapter2Step1 } from "./pages/react-beginners/Chapter2Step1";
 import { Chapter2Step2 } from "./pages/react-beginners/Chapter2Step2";
 import { Chapter2Step3 } from "./pages/react-beginners/Chapter2Step3";
+import { Chapter2Step4 } from "./pages/react-beginners/Chapter2Step4";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
               { path: "step-1", Component: Chapter2Step1 },
               { path: "step-2", Component: Chapter2Step2 },
               { path: "step-3", Component: Chapter2Step3 },
+              { path: "step-4", Component: Chapter2Step4 },
             ],
           },
           { path: "*", Component: ReactBeginnerNotFound },

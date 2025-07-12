@@ -21,9 +21,9 @@ export const Step7Step3 = ({
         style={{ width: "100%", maxWidth: 900 }}
       />
       <Typography>
-        VS Code запускает приложение на своем сервере на вашем компьютере и к нему теперь можно
-        получить доступ через браузер по указанному адресу. Откройте ссылку в
-        браузере
+        VS Code запускает приложение на своем сервере на вашем компьютере и к
+        нему теперь можно получить доступ через браузер по указанному адресу.
+        Откройте ссылку в браузере
       </Typography>
       <img
         src="/vite-browser.png"
@@ -31,7 +31,7 @@ export const Step7Step3 = ({
         style={{ width: "100%", maxWidth: 900 }}
       />
       <BackForwardButtons
-        onHandleForward={() => setActiveStep(3)}
+        href="/react-beginners/chapter-2/step-4"
         onHandleBack={() => setActiveStep(1)}
       />
     </>

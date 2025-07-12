@@ -3,39 +3,37 @@ import { useOutletContext } from "react-router";
 
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 import { StepContainer } from "./StepContainer";
-import { Step7Step1 } from "./Step7/Step7Step1";
-import { Step7Step2 } from "./Step7/Step7Step2";
-import { Step7Step3 } from "./Step7/Step7Step3";
+import { StepNotOpened } from "./StepNotOpened";
+import { Step1 } from "./Chapter2Step4/Step1";
+import { Step2 } from "./Chapter2Step4/Step2";
 
-export const Chapter2Step3 = () => {
+export const Chapter2Step4 = () => {
   const [activeStep, setActiveStep] = useState(0);
   const { progress, setProgress } =
     useOutletContext<ReactBeginnerContextProps>();
 
   const handleActiveStep = (step: number) => {
-    const newStepName = `chapter-2/step-3-${step + 1}`;
+    const newStepName = `chapter-2/step-4-${step + 1}`;
     if (!progress.includes(newStepName)) {
-      const newProgress = [...progress, newStepName];
-
-      if (step === 2 && !progress.includes("chapter-2/step-4-1")) {
-        newProgress.push("chapter-2/step-4-1");
-      }
-
-      setProgress(newProgress);
+      setProgress([...progress, newStepName]);
     }
     setActiveStep(step);
     window.scrollTo(0, 0);
   };
 
+  if (!progress.find((step) => step.startsWith("chapter-2/step-4"))) {
+    return <StepNotOpened />;
+  }
+
   return (
     <StepContainer
-      title="Создаем тестовый проект"
-      steps={[0, 1, 2]}
+      title="Компоненты React.js"
+      steps={[0, 1, 2, 3, 4]}
       activeStep={activeStep}
       setActiveStep={handleActiveStep}
       checkEnabled={() => true}
       checkCompleted={(step) =>
-        step === 0 || progress.includes(`chapter-2/step-3-${step + 1}`)
+        step === 0 || progress.includes(`chapter-2/step-4-${step + 1}`)
       }
       links={[
         { href: "/react-beginners", title: "React.js курс" },
@@ -45,9 +43,8 @@ export const Chapter2Step3 = () => {
         },
       ]}
     >
-      {activeStep === 0 && <Step7Step1 setActiveStep={handleActiveStep} />}
-      {activeStep === 1 && <Step7Step2 setActiveStep={handleActiveStep} />}
-      {activeStep === 2 && <Step7Step3 setActiveStep={handleActiveStep} />}
+      {activeStep === 0 && <Step1 setActiveStep={handleActiveStep} />}
+      {activeStep === 1 && <Step2 setActiveStep={handleActiveStep} />}
     </StepContainer>
   );
 };

@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
-import { LiveEditor, LivePreview, LiveProvider } from "react-live";
 
-import { BackForwardButtons } from "../../../components/BackForwardButtons.tsx";
+import { BackForwardButtons } from "../../../components/BackForwardButtons";
+import { CodeEditorWithPreview } from "../../../components/CodeEditorWithPreview";
 
 export const Step2Step3 = ({
   setActiveStep,
@@ -17,21 +17,15 @@ export const Step2Step3 = ({
         <code>buttonText</code> (например, на <code>mySuperButtonText</code>) -
         но не забудьте при этом обновить имя при ее вызове (на третьей строке)
       </Typography>
-      <LiveProvider
+      <CodeEditorWithPreview
         code={`() => {
   const buttonText = "Like";
   return <button>{buttonText}</button>;
 }`}
-      >
-        <div
-          style={{ display: "grid", gridTemplateColumns: "49% 49%", gap: "2%" }}
-        >
-          <LiveEditor />
-          <LivePreview />
-        </div>
-      </LiveProvider>
+      />
       <Typography>
-        Пока что не обращайте внимания на <code>{`() => {`}</code> в первой и <code>{`}`}</code> в последней строке кода. Если кратко, то все дело в
+        Пока что не обращайте внимания на <code>{`() => {`}</code> в первой и{" "}
+        <code>{`}`}</code> в последней строке кода. Если кратко, то все дело в
         том, что я использую пакет "react-live" (вы будете постоянно
         использовать пакеты в React, которые решают какие-то задачи, на которые
         у вас бы ушли недели и месяцы). Этот пакет позволяет одновременно
