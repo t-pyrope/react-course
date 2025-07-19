@@ -40,7 +40,6 @@ const steps: {
       { title: "Установка окружения", path: "step-2" },
       { title: "Создаем тестовый проект", path: "step-3" },
       { title: "Компоненты React.js", path: "step-4" },
-      { title: "Material UI", path: "step-5" },
     ],
   },
 ];

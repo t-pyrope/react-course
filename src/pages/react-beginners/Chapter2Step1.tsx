@@ -52,17 +52,6 @@ export const Chapter2Step1 = () => {
           (документация) - будем использовать его для создания приложения на
           React.js. Он дает минимальную настройку React.js
         </li>
-        <li>
-          <a
-            href="https://mui.com/material-ui/getting-started/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Material UI - Overview
-          </a>{" "}
-          - будем использовать их компоненты, чтобы особо не заморачиваться с
-          HTML, CSS. Его также используют во многих коммерческих проектах
-        </li>
       </ol>
       <BackForwardButtons href="/react-beginners/chapter-2/step-2" />
     </StepContainer>
