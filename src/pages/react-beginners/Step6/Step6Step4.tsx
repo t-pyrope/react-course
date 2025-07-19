@@ -1,19 +1,10 @@
-import {
-  Alert,
-  Box,
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
-import { useId, useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
+import { useState } from "react";
 import { useOutletContext } from "react-router";
 
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
 import { ReactBeginnerContextProps } from "../../ReactBeginnerLayout";
+import { RadioGroupTest } from "../../../components/RadioGroupTest.tsx";
 
 export const Step6Step4 = ({
   setActiveStep,
@@ -28,7 +19,6 @@ export const Step6Step4 = ({
     isAlreadyCorrect ? true : null,
   );
   const [value, setValue] = useState<string>();
-  const formId = useId();
 
   const handleCheck = () => {
     const newIsCorrect = value === "yes";
@@ -70,36 +60,19 @@ export const Step6Step4 = ({
         Введите в нем <code>node -v</code> - команду, которая проверит, если
         Node.js загружен и выведет его версию
       </Typography>
-      {isCorrect === false && (
-        <Alert severity="error">
-          Некоторые ответы неверны, пожалуйста, попробуйте еще раз
-        </Alert>
-      )}
-      {isCorrect && <Alert severity="success">Все верно!</Alert>}
-      <FormControl>
-        <FormLabel id={formId}>
-          Вы видите установленную версию Node.js?
-        </FormLabel>
-        <RadioGroup
-          aria-labelledby={formId}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          name="radio-buttons-group"
-        >
-          <FormControlLabel
-            value="yes"
-            control={<Radio />}
-            label="Да"
-            disabled={!!isCorrect}
-          />
-          <FormControlLabel
-            value="no"
-            control={<Radio />}
-            label="Нет"
-            disabled={!!isCorrect}
-          />
-        </RadioGroup>
-      </FormControl>
+
+      <RadioGroupTest
+        setValue={setValue}
+        isCorrect={isCorrect}
+        label="Вы видите установленную версию Node.js?"
+        options={[
+          { value: "yes", label: "Да" },
+          { value: "no", label: "Нет" },
+        ]}
+        name="see-downloaded-node-js"
+        value={value}
+      />
+
       <Box>
         <Button
           color="success"

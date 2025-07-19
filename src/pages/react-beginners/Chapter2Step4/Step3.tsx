@@ -2,18 +2,19 @@ import { Box, Button } from "@mui/material";
 import { useState } from "react";
 import { useOutletContext } from "react-router";
 
+import { CodeEditor } from "../../../components/CodeEditor";
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
-import { ReactBeginnerContextProps } from "../../ReactBeginnerLayout.tsx";
-import { RadioGroupTest } from "../../../components/RadioGroupTest.tsx";
+import { RadioGroupTest } from "../../../components/RadioGroupTest";
+import { ReactBeginnerContextProps } from "../../ReactBeginnerLayout";
 
-export const Step6Step2 = ({
+export const Step3 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;
 }) => {
   const { correctAnswers, setCorrectAnswers } =
     useOutletContext<ReactBeginnerContextProps>();
-  const isAlreadyCorrect = correctAnswers.includes("step-6-step-2");
+  const isAlreadyCorrect = correctAnswers.includes("chapter-2-step-3");
 
   const [isCorrect, setIsCorrect] = useState<boolean | null>(
     isAlreadyCorrect ? true : null,
@@ -23,28 +24,43 @@ export const Step6Step2 = ({
   );
 
   const handleCheck = () => {
-    const newIsCorrect = value === "yes";
+    const newIsCorrect = value === "function";
     setIsCorrect(newIsCorrect);
 
     if (newIsCorrect) {
-      setCorrectAnswers([...correctAnswers, "step-6-step-2"]);
+      setCorrectAnswers([...correctAnswers, "chapter-2-step-3"]);
     }
   };
 
   return (
     <>
-      <RadioGroupTest
-        value={value}
-        setValue={setValue}
-        isCorrect={isCorrect}
-        label="У вас установлен и открыт IDE?"
-        options={[
-          { value: "yes", label: "Да" },
-          { value: "no", label: "Нет" },
-        ]}
-        name="ide-opened-radio-group"
+      <CodeEditor
+        code={`const MyButton = () => {
+  const handleClick = () => {};
+
+  return (
+    <button onClick={handleClick}>Click Me!</button>
+  )
+}`}
       />
 
+      <RadioGroupTest
+        setValue={setValue}
+        isCorrect={isCorrect}
+        label={
+          <>
+            Что вернет <code>typeof MyButton?</code>
+          </>
+        }
+        options={[
+          { value: "boolean", label: '"boolean"' },
+          { value: "object", label: '"object"' },
+          { value: "string", label: '"string"' },
+          { value: "function", label: '"function"' },
+          { value: "number", label: '"number"' },
+        ]}
+        name="typeof-my-button"
+      />
       <Box>
         <Button
           color="success"
@@ -56,9 +72,9 @@ export const Step6Step2 = ({
         </Button>
       </Box>
       <BackForwardButtons
-        onHandleForward={() => setActiveStep(2)}
-        onHandleBack={() => setActiveStep(0)}
         isForwardDisabled={!isCorrect}
+        onHandleBack={() => setActiveStep(1)}
+        onHandleForward={() => setActiveStep(3)}
       />
     </>
   );

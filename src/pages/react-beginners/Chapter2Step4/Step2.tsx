@@ -29,12 +29,16 @@ export const Step2 = ({
       <Typography>
         Вот самый простой вариант, как может выглядеть компонент в React.js
       </Typography>
-      <CodeEditor code={`const MyButton = ${CODE}`} />
-      <CodePreview code={CODE} />
+      <CodeEditor
+        code={`// с заглавной буквы
+const MyButton = ${CODE}`}
+      />
 
       <Typography>Вырисуется что-то типа этого:</Typography>
+      <CodePreview code={CODE} />
+
       <BackForwardButtons
-        onHandleForward={() => {}}
+        onHandleForward={() => setActiveStep(2)}
         onHandleBack={() => setActiveStep(0)}
       />
     </>
