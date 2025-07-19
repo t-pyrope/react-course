@@ -8,6 +8,7 @@ import { Step1 } from "./Chapter2Step4/Step1";
 import { Step2 } from "./Chapter2Step4/Step2";
 import { Step3 } from "./Chapter2Step4/Step3";
 import { Step4 } from "./Chapter2Step4/Step4";
+import { Step5 } from "./Chapter2Step4/Step5";
 
 export const Chapter2Step4 = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -49,6 +50,7 @@ export const Chapter2Step4 = () => {
       {activeStep === 1 && <Step2 setActiveStep={handleActiveStep} />}
       {activeStep === 2 && <Step3 setActiveStep={handleActiveStep} />}
       {activeStep === 3 && <Step4 setActiveStep={handleActiveStep} />}
+      {activeStep === 4 && <Step5 setActiveStep={handleActiveStep} />}
     </StepContainer>
   );
 };
