@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useOutletContext } from "react-router";
 
 import { StepContainer } from "./StepContainer";
-import { Step2Step1 } from "./Step2/Step2Step1";
-import { Step2Step2 } from "./Step2/Step2Step2";
-import { Step2Step3 } from "./Step2/Step2Step3";
-import { Step2Step4 } from "./Step2/Step2Step4";
-import { Step2Step5 } from "./Step2/Step2Step5";
-import { Step2Step6 } from "./Step2/Step2Step6";
+import { Step1 } from "./Chapter1Step2/Step1";
+import { Step2 } from "./Chapter1Step2/Step2";
+import { Step3 } from "./Chapter1Step2/Step3";
+import { Step4 } from "./Chapter1Step2/Step4";
+import { Step5 } from "./Chapter1Step2/Step5";
+import { Step6 } from "./Chapter1Step2/Step6";
+import { Step7 } from "./Chapter1Step2/Step7";
 import { StepNotOpened } from "./StepNotOpened";
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 
@@ -46,12 +47,13 @@ export const Chapter1Step2 = () => {
         { href: "/react-beginners/chapter-1", title: "Введение" },
       ]}
     >
-      {activeStep === 0 && <Step2Step1 setActiveStep={handleActiveStep} />}
-      {activeStep === 1 && <Step2Step2 setActiveStep={handleActiveStep} />}
-      {activeStep === 2 && <Step2Step3 setActiveStep={handleActiveStep} />}
-      {activeStep === 3 && <Step2Step4 setActiveStep={handleActiveStep} />}
-      {activeStep === 4 && <Step2Step5 setActiveStep={handleActiveStep} />}
-      {activeStep === 5 && <Step2Step6 setActiveStep={handleActiveStep} />}
+      {activeStep === 0 && <Step1 setActiveStep={handleActiveStep} />}
+      {activeStep === 1 && <Step2 setActiveStep={handleActiveStep} />}
+      {activeStep === 2 && <Step3 setActiveStep={handleActiveStep} />}
+      {activeStep === 3 && <Step4 setActiveStep={handleActiveStep} />}
+      {activeStep === 4 && <Step5 setActiveStep={handleActiveStep} />}
+      {activeStep === 5 && <Step6 setActiveStep={handleActiveStep} />}
+      {activeStep === 6 && <Step7 />}
     </StepContainer>
   );
 };

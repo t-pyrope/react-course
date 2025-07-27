@@ -5,7 +5,7 @@ import { useOutletContext } from "react-router";
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
 import { ReactBeginnerContextProps } from "../../ReactBeginnerLayout";
 
-export const Step2Step6 = ({
+export const Step6 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;
@@ -65,8 +65,8 @@ export const Step2Step6 = ({
 
       <BackForwardButtons
         onHandleBack={() => setActiveStep(4)}
+        onHandleForward={() => setActiveStep(6)}
         isForwardDisabled={!isCorrect}
-        href="/react-beginners/chapter-1/step-3"
       />
     </>
   );

@@ -6,7 +6,7 @@ import { DragAndDropTest } from "../../../components/DragAndDropTest";
 import { BackForwardButtons } from "../../../components/BackForwardButtons";
 import { ReactBeginnerContextProps } from "../../ReactBeginnerLayout";
 
-export const Step2Step5 = ({
+export const Step5 = ({
   setActiveStep,
 }: {
   setActiveStep: (step: number) => void;
