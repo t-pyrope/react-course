@@ -44,7 +44,10 @@ export const Step5 = ({
         alt="Открытая вкладка в браузере, где в центре страницы отображается кнопка 'Click me!'"
         style={{ width: "100%", maxWidth: 900 }}
       />
-      <BackForwardButtons onHandleBack={() => setActiveStep(3)} />
+      <BackForwardButtons
+        onHandleBack={() => setActiveStep(3)}
+        onHandleForward={() => setActiveStep(5)}
+      />
     </>
   );
 };
