@@ -64,7 +64,15 @@ export const StepContainer = ({
               const enabled = checkEnabled?.(label) ?? false;
 
               return (
-                <Step key={label} completed={completed}>
+                <Step
+                  key={label}
+                  completed={completed}
+                  sx={{
+                    "& .MuiStepIcon-root:not(.Mui-active)": {
+                      color: "primary.light",
+                    },
+                  }}
+                >
                   <StepButton
                     disabled={!enabled}
                     onClick={() => setActiveStep(label)}
