@@ -1,15 +1,9 @@
-import {
-  Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  ListSubheader,
-  Toolbar,
-} from "@mui/material";
+import { Box, Drawer, List, ListSubheader, Toolbar } from "@mui/material";
 import { Outlet } from "react-router";
 import { useState } from "react";
+
+import { StepListItem } from "./react-beginners/StepListItem";
+import { Step } from "./react-beginners/types";
 
 export interface ReactBeginnerContextProps {
   progress: string[];
@@ -18,11 +12,7 @@ export interface ReactBeginnerContextProps {
   setCorrectAnswers: (newAnswers: string[]) => void;
 }
 
-const steps: {
-  label: string;
-  path: string;
-  lessons: { title: string; path: string }[];
-}[] = [
+const steps: Step[] = [
   {
     label: "Введение",
     path: "chapter-1",
@@ -87,37 +77,7 @@ export const ReactBeginnerLayout = () => {
           subheader={<ListSubheader>Содержание</ListSubheader>}
         >
           {steps.map((step) => (
-            <ListItem
-              key={step.label}
-              disablePadding
-              sx={{ flexDirection: "column" }}
-            >
-              <ListItemButton
-                href={`/react-beginners/${step.path}`}
-                sx={{ width: "100%" }}
-                disabled={!progress.find((path) => path.startsWith(step.path))}
-              >
-                <ListItemText primary={step.label} />
-              </ListItemButton>
-              <List>
-                {step.lessons.map((lesson) => (
-                  <ListItemButton
-                    sx={{ pl: 4 }}
-                    key={lesson.title}
-                    href={`/react-beginners/${step.path}/${lesson.path}`}
-                    disabled={
-                      !(
-                        progress.find((path) =>
-                          path.startsWith(`${step.path}/${lesson.path}`),
-                        ) || progress.includes(`${step.path}/${lesson.path}`)
-                      )
-                    }
-                  >
-                    <ListItemText primary={lesson.title} />
-                  </ListItemButton>
-                ))}
-              </List>
-            </ListItem>
+            <StepListItem step={step} progress={progress} key={step.path} />
           ))}
         </List>
       </Drawer>
