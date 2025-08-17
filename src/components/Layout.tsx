@@ -25,6 +25,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiStepButton: {
+      styleOverrides: {
+        root: {
+          padding: 16,
+          margin: -16,
+          minHeight: 1,
+        },
+      },
+    },
   },
 });
 
@@ -50,7 +59,7 @@ export const Layout = () => {
                 gap: 16,
               }}
             >
-              <img src={"/icon.svg"} width={30} height={30} />
+              <img src={"/icon.svg"} width={30} height={30} alt="" />
               Hey look ma, I'm a programmer
             </NavLink>
           </Typography>

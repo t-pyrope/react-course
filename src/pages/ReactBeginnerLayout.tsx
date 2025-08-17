@@ -1,9 +1,10 @@
 import { Box, Drawer, List, ListSubheader, Toolbar } from "@mui/material";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { useState } from "react";
 
 import { StepListItem } from "./react-beginners/StepListItem";
 import { Step } from "./react-beginners/types";
+import { StepNotOpened } from "./react-beginners/StepNotOpened.tsx";
 
 export interface ReactBeginnerContextProps {
   progress: string[];
@@ -45,6 +46,13 @@ export const ReactBeginnerLayout = () => {
 
     return currentAnswers ? JSON.parse(currentAnswers) : [];
   });
+  const { pathname } = useLocation();
+
+  const sortedSteps = progress.sort((a, b) => a.localeCompare(b));
+  const biggestStep =
+    sortedSteps[sortedSteps.length - 1]?.match(/.+?step-\d+/)?.[0] ??
+    "chapter-1";
+  const currentStep = pathname.replace(/\/react-beginners\//, "");
 
   const handleSetProgress = (newProgress: string[]) => {
     setProgress(newProgress);
@@ -81,16 +89,20 @@ export const ReactBeginnerLayout = () => {
           ))}
         </List>
       </Drawer>
-      <Outlet
-        context={
-          {
-            correctAnswers,
-            setCorrectAnswers: handleSetCorrectAnswers,
-            progress,
-            setProgress: handleSetProgress,
-          } satisfies ReactBeginnerContextProps
-        }
-      />
+      {progress.find((step) => step.includes(currentStep)) ? (
+        <Outlet
+          context={
+            {
+              correctAnswers,
+              setCorrectAnswers: handleSetCorrectAnswers,
+              progress,
+              setProgress: handleSetProgress,
+            } satisfies ReactBeginnerContextProps
+          }
+        />
+      ) : (
+        <StepNotOpened biggestStep={biggestStep} />
+      )}
     </Box>
   );
 };

@@ -9,7 +9,6 @@ import { Step4 } from "./Chapter1Step2/Step4";
 import { Step5 } from "./Chapter1Step2/Step5";
 import { Step6 } from "./Chapter1Step2/Step6";
 import { Step7 } from "./Chapter1Step2/Step7";
-import { StepNotOpened } from "./StepNotOpened";
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 
 export const Chapter1Step2 = () => {
@@ -25,10 +24,6 @@ export const Chapter1Step2 = () => {
     setActiveStep(step);
     window.scrollTo(0, 0);
   };
-
-  if (!progress.find((step) => step.startsWith("chapter-1/step-2"))) {
-    return <StepNotOpened />;
-  }
 
   return (
     <StepContainer

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useOutletContext } from "react-router";
 
 import { StepContainer } from "./StepContainer";
-import { StepNotOpened } from "./StepNotOpened";
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 import { BackForwardButtons } from "../../components/BackForwardButtons";
 
@@ -12,14 +11,13 @@ export const Chapter1Step1 = () => {
     useOutletContext<ReactBeginnerContextProps>();
 
   useEffect(() => {
-    if (progress.includes("chapter-1/step-1") && !progress.includes("chapter-1/step-2-1")) {
+    if (
+      progress.includes("chapter-1/step-1") &&
+      !progress.includes("chapter-1/step-2-1")
+    ) {
       setProgress([...progress, "chapter-1/step-2-1"]);
     }
   }, [progress, setProgress]);
-
-  if (!progress.includes("chapter-1/step-1")) {
-    return <StepNotOpened />;
-  }
 
   return (
     <StepContainer

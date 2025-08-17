@@ -3,7 +3,6 @@ import { useOutletContext } from "react-router";
 
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 import { StepContainer } from "./StepContainer";
-import { StepNotOpened } from "./StepNotOpened";
 import { Step1 } from "./Chapter2Step4/Step1";
 import { Step2 } from "./Chapter2Step4/Step2";
 import { Step3 } from "./Chapter2Step4/Step3";
@@ -24,10 +23,6 @@ export const Chapter2Step4 = () => {
     setActiveStep(step);
     window.scrollTo(0, 0);
   };
-
-  if (!progress.find((step) => step.startsWith("chapter-2/step-4"))) {
-    return <StepNotOpened />;
-  }
 
   return (
     <StepContainer

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useOutletContext } from "react-router";
 
 import { StepContainer } from "./StepContainer";
-import { StepNotOpened } from "./StepNotOpened";
 import { BackForwardButtons } from "../../components/BackForwardButtons";
 import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 
@@ -16,10 +15,6 @@ export const Chapter2Step1 = () => {
       setProgress([...progress, "chapter-2/step-2-1"]);
     }
   }, [isStepEnabled, progress, setProgress]);
-
-  if (!isStepEnabled) {
-    return <StepNotOpened />;
-  }
 
   return (
     <StepContainer

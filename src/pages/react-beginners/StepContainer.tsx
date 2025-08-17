@@ -55,7 +55,7 @@ export const StepContainer = ({
 
         {steps.length > 1 && !!checkCompleted && !!setActiveStep && (
           <Stepper
-            sx={{ marginLeft: "-8px" }}
+            sx={{ marginLeft: "-8px", mb: 3, mt: 2 }}
             color="secondary"
             activeStep={activeStep}
           >
@@ -70,6 +70,9 @@ export const StepContainer = ({
                   sx={{
                     "& .MuiStepIcon-root:not(.Mui-active)": {
                       color: "primary.light",
+                    },
+                    "& .MuiStepLabel-iconContainer": {
+                      paddingRight: 0,
                     },
                   }}
                 >

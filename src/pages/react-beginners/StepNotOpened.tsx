@@ -1,15 +1,8 @@
 import { Button, Typography } from "@mui/material";
-import { useOutletContext } from "react-router";
 
-import { ReactBeginnerContextProps } from "../ReactBeginnerLayout";
 import { StepContainer } from "./StepContainer";
 
-export const StepNotOpened = () => {
-  const { progress } = useOutletContext<ReactBeginnerContextProps>();
-
-  const sortedSteps = progress.sort((a, b) => a.localeCompare(b));
-  const biggestStep = sortedSteps[sortedSteps.length - 1].split("-")[1];
-
+export const StepNotOpened = ({ biggestStep }: { biggestStep: string }) => {
   return (
     <StepContainer
       title="Шаг еще не открыт"
@@ -18,7 +11,7 @@ export const StepNotOpened = () => {
       links={[]}
     >
       <Typography>Шаг еще не открыт</Typography>
-      <Button href={`/react-beginners/step-${biggestStep}`}>
+      <Button href={`/react-beginners/${biggestStep}`}>
         Вернуться на предыдущий открытый шаг
       </Button>
     </StepContainer>
