@@ -52,7 +52,10 @@ export const ReactBeginnerLayout = () => {
   const biggestStep =
     sortedSteps[sortedSteps.length - 1]?.match(/.+?step-\d+/)?.[0] ??
     "chapter-1";
-  const currentStep = pathname.replace(/\/react-beginners\//, "");
+  const currentStep =
+    pathname === "/react-beginners"
+      ? ""
+      : pathname.replace(/\/react-beginners\//, "");
 
   const handleSetProgress = (newProgress: string[]) => {
     setProgress(newProgress);
